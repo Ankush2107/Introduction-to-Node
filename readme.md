@@ -20,8 +20,9 @@ A library is a collection of pre-written code that developer can use to perform 
 
 `Library is intended to do one very simple task for you and multiple libraries can together form a framework.`
 
-### But, What is node?
-Node is a runtime environment for JavaScript. 
+### But, What is node?(This defination is from official documentation)[https://nodejs.org/en]
+
+Node.js is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts. 
 
 ### Story behind Node
 - Runtime provides a lot of features for JavaScript to execute. So, around 2009 there was a person `Ryan Dahl` launched the solution what he did was he prepared a new runtime called `Node` and took the part of JavaScript and added it to the node environment you use it on the terminals it means JavaScript can directly interact with our Operating System. 
@@ -32,9 +33,18 @@ Node is a runtime environment for JavaScript.
 
 - For example the Asynchronous nature of JavaScript comes due to the runtime, because by default JavaScript is single threaded (synchronous) but the asynchronous mechanism comes due to the runtime, So, browser you to give this fetaures like timers, interval all of this things. And apart from that JavaScript was ment to run inside browsers and What does browser renders `html`, So, browser also provide feature to JavaScript using which it can manipulate html (DOM tree) rendered on the website. 
 
-### The major features JavaScript gets from the NodeJS runtime.
-- File System
-- process (It is about processes runs on your system) 
-
 ### But the Problem here is...
 If the JavaScript can only interact with the browser the possiblities are very less, we can only do things inside browsers we can't interact with the rest of the system.
+
+### Now, How we can code in Node?
+So, you just need to install Node runtime environment from the (official website)[https://nodejs.org/en]. 
+
+## The major features JavaScript gets from the NodeJS runtime.
+### Globals
+Global object is provided by NodeJS runtime environment.
+
+1. process: The process object provides information about, and control over, the current nodejs process.
+
+```
+    console.log(process)
+```
