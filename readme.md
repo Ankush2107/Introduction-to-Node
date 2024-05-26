@@ -43,8 +43,92 @@ So, you just need to install Node runtime environment from the (official website
 ### Globals
 Global object is provided by NodeJS runtime environment.
 
-1. process: The process object provides information about, and control over, the current nodejs process.
+#### 1. process 
+The process object provides information about, and control over, the current nodejs process.
 
 ```
-    console.log(process)
+    console.log(process);
 ```
+
+#### 2. __dirname
+This global is not always accessible.
+
+```
+    console.log(__dirname);
+```
+
+#### 3. module
+The module object provides information about, and control over, the current module.
+
+##### Module Pattern
+you need to explicitly mention what all you want to expose from the files.
+This module object have a lot of properties, one of them is `exports`.
+
+Now we are going to use `module.exports` to export some code.
+
+`searching.js`
+```
+    function linerSearch(arr, x) {
+        for(let i = 0; i < arr.length; i++) {
+            if(arr[i] === x)
+                return i
+        }
+        return NaN
+    }
+
+    function binarySearch(arr, x) {
+        // Some codes
+    }
+
+    module.exports = {
+        linear: linerSearch,
+        binary: binarySearch
+    }
+```
+and import it using common js module in this file
+
+##### Now for consuming the exported code this module pattern contains two ways to consume 
+
+#### 1. Common JS moduling
+`index.js`
+```
+    // consuming the modules
+    const searching = require("./searching.js")
+
+    const arr = [1, 2, 3, 4, 5, 6];
+
+    const x = 6
+
+    console.log(searching.linear(arr, x));
+```
+##### There are two ways to consume code in ES Moduling
+#### 2. ES Moduling 
+
+##### First way: 
+
+`home.mjs`
+```
+    import searching from "./searching.js"
+
+    console.log(searching);
+```
+##### `.mjs` extension tells the node environment that this is compatible for ES Moduling.
+
+#### second way is by preparing packages
+
+##### Package: It is a folder which contains a `package.json` file.
+json stands for JavaScript Object Notation
+
+`package.json`
+```
+    {
+        "type": "module"
+    }
+```
+
+Note: A folder qualifies as a packages when it contains `package.json` file, if it dosn't contains it is not a package. You can refer the docs (More Info about packages)[https://nodejs.org/api/packages.html#modules-packages]
+
+
+
+### What is REPL consoles?
+A REPL console, or Read-Eval-Print Loop, is an interactive programming environment that takes single user inputs (reads them), executes them (evaluates), and returns the result to the user (prints it), and then waits for the next input (loops). This cycle continues, allowing for an iterative and interactive way to write and test code.
