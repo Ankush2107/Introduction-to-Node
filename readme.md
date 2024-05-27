@@ -135,7 +135,7 @@ and import it using ES moduling in this file.
 ```
 ##### `.mjs` extension tells the node environment that this is compatible for ES Moduling.
 
-##### second way is by preparing packages
+##### Second way:
 
 ##### Package: It is a folder which contains a `package.json` file.
 ##### `package.json` file contains information about the package.
