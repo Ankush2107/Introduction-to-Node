@@ -13,9 +13,9 @@ A Framework is a comprehensive package that includes multiple libraries and tool
 A library is a collection of pre-written code that developer can use to perform specific well defined task.
 
 ### In Simple words...
-`Whenever you cook food, you don't have to grow vegetables and spices in your farm by yourself.All you have to is just go to the market and purchase it, then start making you food. This ingredients are so common that it has been grown already by someone else. This whole machanism is called framework.` 
+`Whenever you cook food, you don't have to grow vegetables and spices in your farm by yourself. All you have to do is just go to the market and purchase it, then start making your food. This ingredients are so common that it has been grown already by someone else. This whole machanism is called framework.` 
 
-`In software world there are so many things which are repetative, so just understand that someone else has alreadys done some task for you, this task can be as complex as creating an authentication system or it can be as simple as running your http server. So, you don't have to do everything from scratch.`
+`In software world there are so many things which are repetative, so just understand that someone else has already done some task for you, this task can be as complex as creating an authentication system or it can be as simple as running your http server. So, you don't have to do everything from scratch.`
 
 
 `Library is intended to do one very simple task for you and multiple libraries can together form a framework.`
@@ -25,13 +25,13 @@ A library is a collection of pre-written code that developer can use to perform 
 Node.js is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts. 
 
 ### Story behind Node
-- Runtime provides a lot of features for JavaScript to execute. So, around 2009 there was a person `Ryan Dahl` launched the solution what he did was he prepared a new runtime called `Node` and took the part of JavaScript and added it to the node environment you use it on the terminals it means JavaScript can directly interact with our Operating System. 
+- Runtime provides a lot of features for JavaScript to execute. So, around 2009 there was a person `Ryan Dahl` launched the solution, what he did was he prepared a new runtime called `Node` and took the part of JavaScript and added it to the node environment you use it on the terminals it means JavaScript can directly interact with our Operating System. 
 
 - A lot of OS based fetures can be use by JavaScript. What are those fetures? Featurs like access your file system, files stored on your hard drive you can read the file, change the file, create a new file from your file explorer. 
 
-- JavaScript before node was only run inside the browser and to be very honest the birth of JavaScript was only happen to run on the browsers, when the runtime was the browsers and as I said runtime provides a lot of features to JavaScript. 
+- JavaScript before node was only run inside the browser and to be very honest the birth of JavaScript was only happen to run on the browsers, when the runtime was browser it provides a lot of features to JavaScript. 
 
-- For example the Asynchronous nature of JavaScript comes due to the runtime, because by default JavaScript is single threaded (synchronous) but the asynchronous mechanism comes due to the runtime, So, browser you to give this fetaures like timers, interval all of this things. And apart from that JavaScript was ment to run inside browsers and What does browser renders `html`, So, browser also provide feature to JavaScript using which it can manipulate html (DOM tree) rendered on the website. 
+- For example the Asynchronous nature of JavaScript comes due to the runtime, because by default JavaScript is single threaded (synchronous) but the asynchronous mechanism comes due to the runtime, So, browser give you this fetaures like timers, interval all of this things. And apart from that JavaScript was meant to run inside browsers and What does browser renders? `html` So, browser also provide feature to JavaScript using which it can manipulate html (DOM tree) rendered on the website. 
 
 ### But the Problem here is...
 If the JavaScript can only interact with the browser the possiblities are very less, we can only do things inside browsers we can't interact with the rest of the system.
@@ -64,6 +64,8 @@ The module object provides information about, and control over, the current modu
 you need to explicitly mention what all you want to expose from the files.
 This module object have a lot of properties, one of them is `exports`.
 
+##### 1. Common JS moduling
+
 Now we are going to use `module.exports` to export some code.
 
 `searching.js`
@@ -87,9 +89,6 @@ Now we are going to use `module.exports` to export some code.
 ```
 and import it using common js module in this file
 
-##### Now for consuming the exported code this module pattern contains two ways to consume 
-
-##### 1. Common JS moduling
 `index.js`
 ```
     // consuming the modules
@@ -107,6 +106,27 @@ and import it using common js module in this file
 
 ##### First way: 
 
+`searching.js`
+```
+    function linerSearch(arr, x) {
+        for(let i = 0; i < arr.length; i++) {
+            if(arr[i] === x)
+                return i
+        }
+        return NaN
+    }
+
+    function binarySearch(arr, x) {
+        // Some codes
+    }
+
+    module.exports = {
+        linear: linerSearch,
+        binary: binarySearch
+    }
+```
+and import it using ES moduling in this file.
+
 `home.mjs`
 ```
     import searching from "./searching.js"
@@ -118,7 +138,8 @@ and import it using common js module in this file
 ##### second way is by preparing packages
 
 ##### Package: It is a folder which contains a `package.json` file.
-json stands for JavaScript Object Notation
+##### `package.json` file contains information about the package.
+##### json stands for JavaScript Object Notation
 
 `package.json`
 ```
@@ -162,6 +183,7 @@ Note: A folder qualifies as a packages when it contains `package.json` file, if 
 A REPL console, or Read-Eval-Print Loop, is an interactive programming environment that takes single user inputs (reads them), executes them (evaluates), and returns the result to the user (prints it), and then waits for the next input (loops). This cycle continues, allowing for an iterative and interactive way to write and test code.
 
 #### Command Line Arguments 
+
 ##### process.argv
 The process.argv property returns an array containing the command-line arguments passed when the Node.js process was launched. The first element will be process.execPath. See process.argv0 if access to the original value of argv[0] is needed. The second element will be the path to the JavaScript file being executed. The remaining elements will be any additional command-line arguments. 
 
