@@ -10,7 +10,7 @@ function binarySearch(arr, x) {
     // Some codes
 }
 
-export{
+export default{
     linerSearch,
     binarySearch
 }

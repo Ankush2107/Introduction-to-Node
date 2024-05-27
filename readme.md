@@ -89,7 +89,7 @@ and import it using common js module in this file
 
 ##### Now for consuming the exported code this module pattern contains two ways to consume 
 
-#### 1. Common JS moduling
+##### 1. Common JS moduling
 `index.js`
 ```
     // consuming the modules
@@ -102,7 +102,8 @@ and import it using common js module in this file
     console.log(searching.linear(arr, x));
 ```
 ##### There are two ways to consume code in ES Moduling
-#### 2. ES Moduling 
+
+##### 2. ES Moduling 
 
 ##### First way: 
 
@@ -114,7 +115,7 @@ and import it using common js module in this file
 ```
 ##### `.mjs` extension tells the node environment that this is compatible for ES Moduling.
 
-#### second way is by preparing packages
+##### second way is by preparing packages
 
 ##### Package: It is a folder which contains a `package.json` file.
 json stands for JavaScript Object Notation
@@ -126,9 +127,44 @@ json stands for JavaScript Object Notation
     }
 ```
 
+`sampleEsModuling/searching.js`
+```
+    function linerSearch(arr, x) {
+        for(let i = 0; i < arr.length; i++) {
+            if(arr[i] === x)
+                return i
+        }
+        return NaN
+    }
+
+    function binarySearch(arr, x) {
+        // Some codes
+    }
+
+    export{
+        linerSearch,
+        binarySearch
+    }
+```
+
+`index.js`
+
+```
+    import searching from "./searching.js"
+
+    console.log(searching);
+```
+
 Note: A folder qualifies as a packages when it contains `package.json` file, if it dosn't contains it is not a package. You can refer the docs (More Info about packages)[https://nodejs.org/api/packages.html#modules-packages]
 
-
-
+#### 4. Stream
 ### What is REPL consoles?
 A REPL console, or Read-Eval-Print Loop, is an interactive programming environment that takes single user inputs (reads them), executes them (evaluates), and returns the result to the user (prints it), and then waits for the next input (loops). This cycle continues, allowing for an iterative and interactive way to write and test code.
+
+#### Command Line Arguments 
+##### process.argv
+The process.argv property returns an array containing the command-line arguments passed when the Node.js process was launched. The first element will be process.execPath. See process.argv0 if access to the original value of argv[0] is needed. The second element will be the path to the JavaScript file being executed. The remaining elements will be any additional command-line arguments. 
+
+```
+console.log(process.argv)
+```
