@@ -178,7 +178,75 @@ and import it using ES moduling in this file.
 
 Note: A folder qualifies as a packages when it contains `package.json` file, if it dosn't contains it is not a package. You can refer the docs (More Info about packages)[https://nodejs.org/api/packages.html#modules-packages]
 
-#### 4. Stream
+#### Built in Modules
+
+##### fs module(file system module): 
+
+1. Readfile
+
+`NodeInternalModules/index.html`
+```
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Hello Guy's</h1>
+        <p>Welcome to Midas institute</p>
+    </body>
+    </html>
+```
+
+`NodeInternalModules/fsdemo.js`
+```
+    import { readFile, writeFile } from "fs/promises";
+
+    const filePath = new URL('./index.html', import.meta.url);
+    let data = await readFile(filePath, { encoding: 'utf-8' });
+    console.log(data);
+```
+
+2. WriteFile
+
+`NodeInternalModules/index.html`
+```
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>{title}</h1>
+        <p>{paragraph}</p>
+    </body>
+    </html>
+```
+
+`NodeInternalModules/fsdemo.js`
+```
+    import { readFile, writeFile } from "fs/promises";
+
+    const filePath = new URL('./index.html', import.meta.url);
+    let data = await readFile(filePath, { encoding: 'utf-8' });
+    console.log(data);
+
+    const obj =  {
+        title: "Hello Guy's",
+        paragraph: "Welcome to Midas institute"
+    }
+
+    for(const [key, value] of Object.entries(obj)) {
+        data = data.replace(`{${key}}`, value)
+    }
+
+    await writeFile(new URL('./index.html', import.meta.url), data);
+```
+
 ### What is REPL consoles?
 A REPL console, or Read-Eval-Print Loop, is an interactive programming environment that takes single user inputs (reads them), executes them (evaluates), and returns the result to the user (prints it), and then waits for the next input (loops). This cycle continues, allowing for an iterative and interactive way to write and test code.
 
