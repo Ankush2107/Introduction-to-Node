@@ -200,7 +200,7 @@ Note: A folder qualifies as a packages when it contains `package.json` file, if 
     </html>
 ```
 
-`NodeInternalModules/fsdemo.js`
+`NodeInternalModules/fsdemo.mjs`
 ```
     import { readFile, writeFile } from "fs/promises";
 
@@ -227,7 +227,7 @@ Note: A folder qualifies as a packages when it contains `package.json` file, if 
     </html>
 ```
 
-`NodeInternalModules/fsdemo.js`
+`NodeInternalModules/fsdemo.mjs`
 ```
     import { readFile, writeFile } from "fs/promises";
 
