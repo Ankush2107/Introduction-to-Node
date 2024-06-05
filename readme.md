@@ -300,9 +300,9 @@ Line24: Connecting the readable stream to the writable stream.
 ### What is REPL consoles?
 A REPL console, or Read-Eval-Print Loop, is an interactive programming environment that takes single user inputs (reads them), executes them (evaluates), and returns the result to the user (prints it), and then waits for the next input (loops). This cycle continues, allowing for an iterative and interactive way to write and test code.
 
-#### Command Line Arguments 
+### Command Line Arguments 
 
-##### process.argv
+#### process.argv
 The process.argv property returns an array containing the command-line arguments passed when the Node.js process was launched. The first element will be process.execPath. See process.argv0 if access to the original value of argv[0] is needed. The second element will be the path to the JavaScript file being executed. The remaining elements will be any additional command-line arguments. 
 
 ```
