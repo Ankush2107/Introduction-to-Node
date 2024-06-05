@@ -178,56 +178,6 @@ and import it using ES moduling in this file.
 
 Note: A folder qualifies as a packages when it contains `package.json` file, if it dosn't contains it is not a package. You can refer the docs (More Info about packages)[https://nodejs.org/api/packages.html#modules-packages]
 
-#### 4. Streams
-
-Streams are collections of data — just like arrays or strings. The difference is that streams might not be available all at once, and they don’t have to fit in memory. This makes streams really powerful when working with large amounts of data, or data that’s coming from an external source one chunk at a time.
-
-However, streams are not only about working with big data. They also give us the power of composability in our code. Just like we can compose powerful linux commands by piping other smaller Linux commands, we can do exactly the same in Node with streams.
-
-`process.stdout`: Using process.stdout you will get access to the output stream. 
-
-`process.stdout.write`:  process.stdout.write will start printing the data in the output stream.
-
-`Strems/index.txt`
-```
-    some random text you can see by opening the file.
-```
-
-`Streams/script.js`
-```
-    const fs = require('fs');
-    const transformStream = require('stream');
-
-    // Got file
-    let fileStream = fs.createReadStream(__dirname + "/index.txt");
-    let outputStream = process.stdout;
-
-    // reading file
-    let middleStream = new transformStream.Transform({
-        transform(chunk, enc, nextCB) {
-            let modifiedChunk = chunk.toString().toUpperCase();
-            this.push(modifiedChunk);
-            setTimeout(nextCB, 1000);
-            nextCB();
-        }
-    })
-
-    // getting the output printed
-    // fileStream.pipe(outputStream);
-    let newReadableStream = fileStream.pipe(middleStream);
-    newReadableStream.pipe(outputStream);
-```
-
-In `script.js` file:
-
-Line4: I required the fs module.
-Line5: I required the stream module.
-Line8: I setup the readable stream in the file.
-Line9: I'm storing the process.stdout inside some variable.
-Line12: I'm making a modifiable, transferable streams. 
-Line23: I'm connecting my file 'filestream' with transferable and modifiable stream.
-Line24: Connecting the readable stream to the writable stream.
-
 #### Built in Modules
 
 ##### fs module(file system module): 
@@ -296,6 +246,58 @@ Line24: Connecting the readable stream to the writable stream.
 
     await writeFile(new URL('./index.html', import.meta.url), data);
 ```
+
+
+#### 4. Streams
+
+Streams are collections of data — just like arrays or strings. The difference is that streams might not be available all at once, and they don’t have to fit in memory. This makes streams really powerful when working with large amounts of data, or data that’s coming from an external source one chunk at a time.
+
+However, streams are not only about working with big data. They also give us the power of composability in our code. Just like we can compose powerful linux commands by piping other smaller Linux commands, we can do exactly the same in Node with streams.
+
+`process.stdout`: Using process.stdout you will get access to the output stream. 
+
+`process.stdout.write`:  process.stdout.write will start printing the data in the output stream.
+
+`Strems/index.txt`
+```
+    some random text you can see by opening the file.
+```
+
+`Streams/script.js`
+```
+    const fs = require('fs');
+    const transformStream = require('stream');
+
+    // Got file
+    let fileStream = fs.createReadStream(__dirname + "/index.txt");
+    let outputStream = process.stdout;
+
+    // reading file
+    let middleStream = new transformStream.Transform({
+        transform(chunk, enc, nextCB) {
+            let modifiedChunk = chunk.toString().toUpperCase();
+            this.push(modifiedChunk);
+            setTimeout(nextCB, 1000);
+            nextCB();
+        }
+    })
+
+    // getting the output printed
+    // fileStream.pipe(outputStream);
+    let newReadableStream = fileStream.pipe(middleStream);
+    newReadableStream.pipe(outputStream);
+```
+
+In `script.js` file:
+
+Line4: I required the fs module.
+Line5: I required the stream module.
+Line8: I setup the readable stream in the file.
+Line9: I'm storing the process.stdout inside some variable.
+Line12: I'm making a modifiable, transferable streams. 
+Line23: I'm connecting my file 'filestream' with transferable and modifiable stream.
+Line24: Connecting the readable stream to the writable stream.
+
 
 ### What is REPL consoles?
 A REPL console, or Read-Eval-Print Loop, is an interactive programming environment that takes single user inputs (reads them), executes them (evaluates), and returns the result to the user (prints it), and then waits for the next input (loops). This cycle continues, allowing for an iterative and interactive way to write and test code.
